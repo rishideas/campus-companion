@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Companion | RNSIT</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header class="topbar">
+        <div>
+            <h1>Campus Companion</h1>
+            <p>RNSIT Campus Navigation</p>
+        </div>
+    </header>
+
+    <main class="page">
+        <section class="panel search-panel">
+            <h2>Find your route</h2>
+            <p class="muted">Search for a campus location and select it from the suggestions.</p>
+
+            <div class="field-group">
+                <label for="startSearch">Starting location</label>
+                <div class="search-row">
+                    <input
+                        id="startSearch"
+                        type="text"
+                        placeholder="Type a starting location..."
+                        autocomplete="off"
+                        spellcheck="false"
+                    >
+                    <button type="button" id="startViewAllBtn" class="secondary">
+                        View all
+                    </button>
+                </div>
+                <div id="startHints" class="suggestions" hidden></div>
+                <div id="startAllLocations" class="location-list" hidden></div>
+                <p id="startSelected" class="selected-label">No starting location selected.</p>
+            </div>
+
+            <div class="field-group">
+                <label for="destinationSearch">Destination</label>
+                <div class="search-row">
+                    <input
+                        id="destinationSearch"
+                        type="text"
+                        placeholder="Type your destination..."
+                        autocomplete="off"
+                        spellcheck="false"
+                    >
+                    <button type="button" id="destinationViewAllBtn" class="secondary">
+                        View all
+                    </button>
+                </div>
+                <div id="destinationHints" class="suggestions" hidden></div>
+                <div id="destinationAllLocations" class="location-list" hidden></div>
+                <p id="destinationSelected" class="selected-label">No destination selected.</p>
+            </div>
+
+            <button type="button" id="routeBtn" class="primary">
+                Find Route
+            </button>
+
+            <p id="routeStatus" class="status" role="status" aria-live="polite">
+                Load the campus map, then select your starting location and destination.
+            </p>
+        </section>
+
+        <section class="panel map-panel">
+            <div class="section-heading">
+                <h2>Campus Map</h2>
+                <span class="map-note">Outdoor walking routes</span>
+            </div>
+            <div id="map" aria-label="Interactive campus map">
+                Loading map...
+            </div>
+        </section>
+
+        <section id="indoorSection" class="panel indoor-section" hidden>
+            <h2>Indoor Directions</h2>
+            <p class="muted">
+                These directions use the Admin Block layout you provided.
+            </p>
+            <div id="indoorGuideResult"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Campus Companion · RNSIT</p>
+    </footer>
+
+    <script src="/static/app.js"></script>
+
+    <!-- Replace YOUR_EXISTING_API_KEY with the key already used in your old index.html. -->
+    <script
+        async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvYwv4vgks6YG3Kv_ILvXm87HnOgawek4&loading=async&callback=initMap">
+    </script>
+</body>
+</html>
